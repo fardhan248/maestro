@@ -82,7 +82,7 @@
 }
 
 .flex-container img {
-  max-width: 550px; /* Ukuran maksimal gambar */
+  max-width: 540px; /* Ukuran maksimal gambar */
   height: auto;
 }
 
