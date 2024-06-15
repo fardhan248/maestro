@@ -25,9 +25,9 @@
 
 .slider {
   -webkit-appearance: none;
-  width: 100%;
+  width: 50%;
   height: 25px;
-  background: #d3d3d3;
+  background: #fcfce4;
   outline: none;
   opacity: 0.7;
   -webkit-transition: .2s;
@@ -41,18 +41,16 @@
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 25px;
+  width: 20px;
   height: 25px;
-  background: #04AA6D;
+  background: #5e7153;
   cursor: pointer;
-  padding-left: 50px;
-	padding-right: 50px;
 }
 
 .slider::-moz-range-thumb {
   width: 25px;
   height: 25px;
-  background: #04AA6D;
+  background: #5e7153;
   cursor: pointer;
 }
 
@@ -64,6 +62,13 @@
 
 .resultcontainer h2 {
   color: white;
+}
+
+.rosscorer {
+  background-color: #783e19;
+  padding: 5px 10px; /* Mengurangi padding untuk mengecilkan area background */
+  display: inline-block; /* Agar background hanya mengelilingi teks */
+  margin: 5px; /* Tambahan margin jika diperlukan */
 }
 
 /*--------------------------------------------------------------
@@ -114,6 +119,39 @@
 
 .accordion-content p {
   margin: 0;
+}
+
+/*--------------------------------------------------------------
+# Container Information Page
+--------------------------------------------------------------*/
+.container-info {
+  font-family: "Jost", sans-serif;
+  line-height: 1.6;
+  margin: 20px;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+h3 {
+  margin-top: 20px;
+}
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.profile-item {
+  display: flex;
+  flex-wrap: wrap;
+}
+.label {
+  flex: 0 0 150px; /* Adjust the width as needed */
+  font-weight: bold;
+}
+.colon {
+  flex: 0 0 10px;
+}
+.value {
+  flex: 1;
 }
 
 /*--------------------------------------------------------------
@@ -226,7 +264,7 @@ h6 {
 
 #header.header-scrolled,
 #header.header-inner-pages {
-  background: rgba(198, 104, 40, 1);
+  background: #ba9470;
 }
 
 #header .logo {
@@ -248,7 +286,7 @@ h6 {
 }
 
 #header .logo img {
-  max-height: 40px;
+  max-height: 60px;
 }
 
 /*--------------------------------------------------------------
@@ -314,7 +352,7 @@ h6 {
   padding: 8px 20px;
   margin-left: 30px;
   border-radius: 50px;
-  color: #fff;
+  color: #783e19;
   font-size: 14px;
   border: 2px solid #ECCD54;
   font-weight: 600;
@@ -510,7 +548,7 @@ h6 {
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
-  height: 101vh;
+  height: 105vh;
   background: url("../img/cover2.jpg") top center;
   background-size: cover;
   position: relative;
@@ -669,7 +707,7 @@ section {
   display: block;
   width: 120px;
   height: 1px;
-  background: #ddd;
+  background: transparent;
   bottom: 1px;
   left: calc(50% - 60px);
 }
@@ -680,7 +718,7 @@ section {
   display: inline-block;
   width: 120px;
   height: 1px;
-  background: #ffde9e;
+  background: transparent;
   bottom: 0;
   left: calc(50% - 20px);
   margin: 4px 10px;
