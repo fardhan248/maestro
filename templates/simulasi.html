@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script type="text/javascript" src="brython.js"></script>
+    <script type="text/javascript" src="brython_stdlib.js"></script>
+
+    <title>Maestro</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="assets/img/logo maestro.png" rel="icon">
+    <link href="assets/img/logo maestro.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+</head>
+<body onload="brython()">
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top header-inner-pages">
+    <div class="container d-flex align-items-center">
+      <!--<h1 class="logo me-auto"><a href="/">MAESTRO</a></h1> -->
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <a href="/" class="logo me-auto"><img src="assets/img/logo maestro.png" alt="" class="img-fluid"></a>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto" href="../#hero">Beranda</a></li>
+          <li><a class="nav-link scrollto" href="../#about">Tentang Maestro</a></li>
+          <li><a class="nav-link scrollto" href="../#kepointeori">Tentang Gelombang Gunung</a></li>
+          <li><a class="nav-link scrollto" href="/quiz">Kuis</a></li>
+          <li><a class="nav-link scrollto active" href="/simulasi">Simulasi</a></li>
+          <li><a class="nav-link scrollto" href="../#team">Tim</a></li>
+          <li><a class="nav-link scrollto" href="../#contact">Kontak</a></li>
+          <li><a class="getstarted scrollto" href="../#about">Mulai</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+    </div>
+  </header><!-- End Header -->
+
+  <main class="main">
+    <section id="sim" class="sim">
+      <div class="container" data-aos="zoom-in">
+        <div class="text-center">
+        <div class="slidecontainer">
+
+          <br/><br/><br/>
+          <a href="/information" target="_blank">
+            <button class="sim-btn">Informasi Variabel</button>
+          </a>
+
+          <div class="row content">
+            <div class="col-lg-6">
+              <h1>PROFIL ATMOSFER</h1>
+              <input type="range" min="0" max="100" step="0.5" value="20" class="slider" id="wspd_range">
+              <p>Angin Permukaan: <span id="wspd"></span> m/s</p>
+
+              <input type="range" min="0" max="50" step="0.5" value="4" class="slider" id="lupper_range">
+              <p>L Atas (10^-4): <span id="lupper"></span></p>
+
+              <input type="range" min="0" max="50" step="0.5" value="10" class="slider" id="llower_range">
+              <p>L Bawah (10^-4): <span id="llower"></span></p>
+
+              <input type="range" min="0" max="20" step="0.1" value="3.5" class="slider" id="intht_range">
+              <p>Tinggi Antarmuka: <span id="intht"></span>km</p>
+
+              <h1>PROFIL MEDAN</h1>
+              <input type="range" min="0" max="3" step="0.02" value="0.5" class="slider" id="lmaxhgt_range">
+              <p>Tinggi Maks.: <span id="maxhgt"></span> km</p>
+
+              <input type="range" min="0" max="25" step="0.25" value="2.5" class="slider" id="hlfwdt_range">
+              <p>Setengah-Lebar Gunung: <span id="hlfwdt"></span> km</p>
+            </div>
+
+            <div class="col-lg-6">
+              <h1>PROFIL DOMAIN</h1>
+              <input type="range" min="0" max="100" step="1" value="40" class="slider" id="lhdom_range">
+              <p>Horizontal: <span id="hdom"></span> km</p>
+
+              <input type="range" min="0" max="20" step="0.2" value="10" class="slider" id="lvdom_range">
+              <p>Vertikal: <span id="vdom"></span> km</p>
+
+              <h1>PROFIL SPEKTRAL</h1>
+              <input type="range" min="0" max="50" step="0.5" value="0" class="slider" id="lsmink_range">
+              <p>Gelombang Min.#: <span id="smink"></span> Setengah-Lebar Gunung</p>
+
+              <input type="range" min="0" max="50" step="0.5" value="30" class="slider" id="lsmaxk_range">
+              <p>Gelombang Maks.#: <span id="smaxk"></span> Setengah-Lebar Gunung</p>
+
+              <span class="rosscorer">Bilangan Rossby (45N): <span id="rossby"></span></span>
+              <br/>
+              <span class="rosscorer">Scorer: <span id="scorer"></span></span>
+
+              <div class="resultcontainer">
+                <div id="result">
+                  <button class="sim-btn" id="analyze">Analisis Aliran</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script type="text/python3">
+          from browser import document, ajax, window
+          import json
+          import warnings
+
+          def initial_value():
+            document["wspd"].text = str(document["wspd_range"].value)
+            document["hlfwdt"].text = str(document["hlfwdt_range"].value)
+            document["lupper"].text = str(document["lupper_range"].value)
+            document["llower"].text = str(document["llower_range"].value)
+            document["intht"].text = str(document["intht_range"].value)
+            document["maxhgt"].text = str(document["lmaxhgt_range"].value)
+            document["hdom"].text = str(document["lhdom_range"].value)
+            document["vdom"].text = str(document["lvdom_range"].value)
+            document["smink"].text = str(document["lsmink_range"].value)
+            document["smaxk"].text = str(document["lsmaxk_range"].value)
+            
+            req = ajax.ajax()
+            req.bind("complete", show_results_rossby)
+            req.open("POST", "/update_rossby", True)
+            req.set_header("content-type", "application/json")
+            data = json.dumps({"wspd_value": document["wspd_range"].value, "hlfwdt_value": document["hlfwdt_range"].value})
+            req.send(data)
+
+            req = ajax.ajax()
+            req.bind("complete", show_results_scorer)
+            req.open("POST", "/update_scorer", True)
+            req.set_header("content-type", "application/json")
+            data = json.dumps({"llower_value": document["llower_range"].value, "lupper_value": document["lupper_range"].value, "intht_value": document["intht_range"].value})
+            req.send(data)
+
+            #analyze_flow(None)
+            
+          def show_results_rossby(response):
+            document["rossby"].text = response.text
+            
+          def show_results_scorer(response):
+            document["scorer"].text = response.text
+          
+          def updatewspd(event):
+            document["wspd"].text = event.target.value
+            req = ajax.ajax()
+            req.bind("complete", show_results_rossby)
+            req.open("POST", "/update_rossby", True)
+            req.set_header("content-type", "application/json")
+            data = json.dumps({"wspd_value": event.target.value, "hlfwdt_value": document["hlfwdt_range"].value})
+            req.send(data)
+
+          def updatehlfwdt(event):
+            document["hlfwdt"].text = event.target.value
+            req = ajax.ajax()
+            req.bind("complete", show_results_rossby)
+            req.open("POST", "/update_rossby", True)
+            req.set_header("content-type", "application/json")
+            data = json.dumps({"hlfwdt_value": event.target.value, "wspd_value": document["wspd_range"].value})
+            req.send(data)
+          
+          def updatelupper(event):
+            document["lupper"].text = event.target.value
+            req = ajax.ajax()
+            req.bind("complete", show_results_scorer)
+            req.open("POST", "/update_scorer", True)
+            req.set_header("content-type", "application/json")
+            data = json.dumps({"lupper_value": event.target.value, "llower_value": document["llower_range"].value, "intht_value": document["intht_range"].value})
+            req.send(data)
+          
+          def updatellower(event):
+            document["llower"].text = event.target.value
+            req = ajax.ajax()
+            req.bind("complete", show_results_scorer)
+            req.open("POST", "/update_scorer", True)
+            req.set_header("content-type", "application/json")
+            data = json.dumps({"llower_value": event.target.value, "lupper_value": document["lupper_range"].value, "intht_value": document["intht_range"].value})
+            req.send(data)
+          
+          def updateintht(event):
+            document["intht"].text = event.target.value
+            req = ajax.ajax()
+            req.bind("complete", show_results_scorer)
+            req.open("POST", "/update_scorer", True)
+            req.set_header("content-type", "application/json")
+            data = json.dumps({"intht_value": event.target.value, "lupper_value": document["lupper_range"].value, "llower_value": document["llower_range"].value})
+            req.send(data)
+          
+          def updatelmaxhgt(event):
+            document["maxhgt"].text = event.target.value
+
+          def updatelhdom(event):
+            document["hdom"].text = event.target.value
+
+          def updatelvdom(event):
+            document["vdom"].text = event.target.value
+
+          def updatelsmink(event):
+            document["smink"].text = event.target.value 
+            
+          def updatelsmaxk(event):
+            document["smaxk"].text = event.target.value 
+
+          def analyze_flow(event):
+            hlfwdt_value = document["hlfwdt_range"].value
+
+            def on_complete(req):
+              if req.status == 200:
+                hasil = req.json
+                tlw_data = hasil["tlw_plot"]
+                stream_data = hasil["stream_plot"]
+
+                form = document.createElement('form')
+                form.setAttribute('method', 'post')
+                form.setAttribute('action', '/showResults')
+                form.setAttribute('target', '_blank')
+
+                tlw_input = document.createElement('input')
+                tlw_input.setAttribute('type', 'hidden')
+                tlw_input.setAttribute('name', 'tlw_data')
+                tlw_input.setAttribute('value', tlw_data)
+                form.appendChild(tlw_input)
+
+                stream_input = document.createElement('input')
+                stream_input.setAttribute('type', 'hidden')
+                stream_input.setAttribute('name', 'stream_data')
+                stream_input.setAttribute('value', stream_data)
+                form.appendChild(stream_input)
+
+                document.body.appendChild(form)
+                form.submit()
+
+                #document["tlw"].attrs["src"] = f"data:image/png;base64,{tlw_data}"
+                #document["stream"].attrs["src"] = f"data:image/png;base64,{stream_data}"
+              else:
+                print(f"Error {req.status}: {req.text}")
+
+            # Pemeriksaan jika nilai Setengah-Lebar Gunung (hlfwdt_range) adalah 0
+            if hlfwdt_value == str(0):
+              window.alert("Aliran tidak dapat dihitung. Setengah-Lebar Gunung harus lebih dari 0.")
+            else:
+              req = ajax.ajax()
+              req.bind("complete", on_complete)
+              req.open("POST", "/analyzeFlow", True)
+              req.set_header("Content-Type", "application/json")
+              data = json.dumps({
+                "hlfwdt_value": hlfwdt_value,
+                "intht_value": document["intht_range"].value,
+                "maxhgt_value": document["lmaxhgt_range"].value,
+                "wspd_value": document["wspd_range"].value,
+                "lupper_value": document["lupper_range"].value,
+                "llower_value": document["llower_range"].value,
+                "hdom_value": document["lhdom_range"].value,
+                "vdom_value": document["lvdom_range"].value,
+                "smink_value": document["lsmink_range"].value,
+                "smaxk_value": document["lsmaxk_range"].value
+              }) 
+              req.send(data)
+          
+          initial_value()
+          document["wspd_range"].bind("input", updatewspd)
+          document["hlfwdt_range"].bind("input", updatehlfwdt)
+          document["lupper_range"].bind("input", updatelupper)
+          document["llower_range"].bind("input", updatellower)
+          document["intht_range"].bind("input", updateintht)
+          document["lmaxhgt_range"].bind("input", updatelmaxhgt)
+          document["lhdom_range"].bind("input", updatelhdom)
+          document["lvdom_range"].bind("input", updatelvdom)
+          document["lsmink_range"].bind("input", updatelsmink)
+          document["lsmaxk_range"].bind("input", updatelsmaxk)
+          document["analyze"].bind("click", analyze_flow)
+      </script>
+      </div>
+      </div>
+    </section>
+</main>
+
+      <footer id="footer">
+        <div class="footer-top">
+          <div class="container">
+            <div class="row">
+    
+              <div class="col-lg-3 col-md-6 footer-contact">
+                <h3>MAESTRO</h3>
+                <p>
+                  Jalan Ganesa No.10 <br>
+                  Kota Bandung, 40132<br>
+                  Indonesia <br><br>
+                  <strong>Telepon:</strong>088345678788<br>
+                  <strong>Email:</strong> maestro@gmail.com<br>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        <div class="container footer-bottom clearfix">
+          <div class="copyright">
+            <span>MAESTRO</span></strong>.
+          </div>
+          <div class="credits">
+            <!-- All the links in the footer should remain intact. -->
+            <!-- You can delete the links only if you purchased the pro version. -->
+            <!-- Licensing information: https://bootstrapmade.com/license/ -->
+            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
+            Didesain oleh <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          </div>
+        </div>
+      </footer><!-- End Footer -->  
+    
+      <div id="preloader"></div>
+      <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    
+      <!-- Vendor JS Files -->
+      <script src="assets/vendor/aos/aos.js"></script>
+      <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+      <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+      <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+      <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+      <script src="assets/vendor/php-email-form/validate.js"></script>
+    
+      <!-- Template Main JS File -->
+      <script src="assets/js/main.js"></script>
+
+</body>
+</html>
