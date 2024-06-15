@@ -79,7 +79,7 @@
               <p>L Bawah (10^-4): <span id="llower"></span></p>
 
               <input type="range" min="0" max="20" step="0.1" value="3.5" class="slider" id="intht_range">
-              <p>Tinggi Antarmuka: <span id="intht"></span>km</p>
+              <p>Tinggi Antarmuka: <span id="intht"></span> km</p>
 
               <h1>PROFIL MEDAN</h1>
               <input type="range" min="0" max="3" step="0.02" value="0.5" class="slider" id="lmaxhgt_range">
@@ -104,9 +104,9 @@
               <input type="range" min="0" max="50" step="0.5" value="30" class="slider" id="lsmaxk_range">
               <p>Gelombang Maks.#: <span id="smaxk"></span> Setengah-Lebar Gunung</p>
 
-              <span class="rosscorer">Bilangan Rossby (45N): <span id="rossby"></span></span>
-              <br/>
               <span class="rosscorer">Kondisi Scorer (<i>Trapped</i> > 1): <span id="scorer"></span></span>
+              <br/>
+              <span class="rosscorer">Bilangan Rossby (45N): <span id="rossby"></span></span>
 
               <div class="resultcontainer">
                 <div id="result">
@@ -241,6 +241,27 @@
                 stream_input.setAttribute('name', 'stream_data')
                 stream_input.setAttribute('value', stream_data)
                 form.appendChild(stream_input)
+
+                # Input untuk setiap variabel dalam data
+                variables = [
+                    {"name": "hlfwdt_value", "value": hlfwdt_value},
+                    {"name": "intht_value", "value": document["intht_range"].value},
+                    {"name": "maxhgt_value", "value": document["lmaxhgt_range"].value},
+                    {"name": "wspd_value", "value": document["wspd_range"].value},
+                    {"name": "lupper_value", "value": document["lupper_range"].value},
+                    {"name": "llower_value", "value": document["llower_range"].value},
+                    {"name": "hdom_value", "value": document["lhdom_range"].value},
+                    {"name": "vdom_value", "value": document["lvdom_range"].value},
+                    {"name": "smink_value", "value": document["lsmink_range"].value},
+                    {"name": "smaxk_value", "value": document["lsmaxk_range"].value},
+                ]
+    
+                for variable in variables:
+                    input_elem = document.createElement('input')
+                    input_elem.setAttribute('type', 'hidden')
+                    input_elem.setAttribute('name', variable["name"])
+                    input_elem.setAttribute('value', variable["value"])
+                    form.appendChild(input_elem)
 
                 document.body.appendChild(form)
                 form.submit()
