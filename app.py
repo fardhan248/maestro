@@ -247,6 +247,30 @@ def show():
     tlw_data = request.form.get('tlw_data')
     stream_data = request.form.get('stream_data')
 
+    hlfwdt = float(request.form.get("hlfwdt_value"))
+    intht = float(request.form.get("intht_value"))
+    maxhgt = float(request.form.get("maxhgt_value"))
+    wspd = float(request.form.get("wspd_value"))
+    lupper = float(request.form.get("lupper_value"))
+    llower = float(request.form.get("llower_value"))
+    hdom = float(request.form.get("hdom_value"))
+    vdom = float(request.form.get("vdom_value"))
+    smink = float(request.form.get("smink_value"))
+    smaxk = float(request.form.get("smaxk_value"))
+
+    # Scorer
+    H = 1000*intht
+    Llower = 0.0001*llower
+    Lupper = 0.0001*lupper
+    scorer = 4*H*H*(Llower*Llower-Lupper*Lupper)/(np.pi*np.pi)
+    scorer = "{0:.4f}".format(scorer)
+
+    # Rossby
+    U = wspd
+    a = 1000*hlfwdt
+    rossby = U/(f*a)
+    rossby = "{0:.4f}".format(rossby)
+
     html_template = """
     <!DOCTYPE html>
     <html lang="en">
@@ -328,17 +352,105 @@ def show():
             <div class="flex-container">
                 <img id="tlw" src="data:image/png;base64,{{ tlw_data }}">
             </div>
-        </div><!-- End Team Member -->
+        </div>
 
         <div class="col-lg-6">
             <div class="flex-container">
                 <img id="stream" src="data:image/png;base64,{{ stream_data }}">
             </div>
-        </div><!-- End Team Member -->
+        </div>
         </div>
     </div>
 
     </section>
+
+    <div class="container section-title">
+        <h2>Spesifikasi Hasil Plot</h2>
+    </div>
+
+    <div class="container-info">
+        <div class="row content">
+            <div class="col-lg-6">
+                <h3>PROFIL ATMOSFER</h3>
+                <div class="profile-section">
+                    <div class="profile-item">
+                        <div class="label">Angin Permukaan</div>
+                        <div class="colon">:</div>
+                        <div class="value">{{ wspd }} m/s</div>
+                    </div>
+                    <div class="profile-item">
+                        <div class="label">L Atas</div>
+                        <div class="colon">:</div>
+                        <div class="value">{{ lupper }} &#8226 10^-4</div>
+                    </div>
+                    <div class="profile-item">
+                        <div class="label">L Bawah</div>
+                        <div class="colon">:</div>
+                        <div class="value">{{ llower }} &#8226 10^-4</div>
+                    </div>
+                    <div class="profile-item">
+                        <div class="label">Tinggi Antarmuka</div>
+                        <div class="colon">:</div>
+                        <div class="value">{{ intht }} km</div>
+                    </div>
+                    <div class="profile-item">
+                        <div class="label">Kondisi Scorer</div>
+                        <div class="colon">:</div>
+                        <div class="value">{{ scorer }}</div>
+                    </div>
+                    <div class="profile-item">
+                        <div class="label">Bilangan Rossby</div>
+                        <div class="colon">:</div>
+                        <div class="value">{{ rossby }}</div>
+                    </div>
+                </div>
+
+                <h3>PROFIL MEDAN</h3>
+                <div class="profile-section">
+                    <div class="profile-item">
+                        <div class="label">Tinggi Maks.</div>
+                        <div class="colon">:</div>
+                        <div class="value">{{ maxhgt }} km</div>
+                    </div>
+                    <div class="profile-item">
+                        <div class="label">Setengah-Lebar Gunung</div>
+                        <div class="colon">:</div>
+                        <div class="value">{{ hlfwdt }} km</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <h3>PROFIL DOMAIN</h3>
+                <div class="profile-section">
+                    <div class="profile-item">
+                        <div class="label">Horizontal</div>
+                        <div class="colon">:</div>
+                        <div class="value">{{ hdom }} km</div>
+                    </div>
+                    <div class="profile-item">
+                        <div class="label">Vertikal</div>
+                        <div class="colon">:</div>
+                        <div class="value">{{ vdom }} km</div>
+                    </div>
+                </div>
+
+                <h3>PROFIL SPEKTRAL</h3>
+                <div class="profile-section">
+                    <div class="profile-item">
+                        <div class="label">Bilangan Gelombang Min.</div>
+                        <div class="colon">:</div>
+                        <div class="value">{{ smink }} Setengah-Lebar Gunung</div>
+                    </div>
+                    <div class="profile-item">
+                        <div class="label">Bilangan Gelombang Maks.</div>
+                        <div class="colon">:</div>
+                        <div class="value">{{ smaxk }} Setengah-Lebar Gunung</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     </main>
 
@@ -361,7 +473,7 @@ def show():
     </html>
     """
 
-    return render_template_string(html_template, tlw_data=tlw_data, stream_data=stream_data)
+    return render_template_string(html_template, tlw_data=tlw_data, stream_data=stream_data, hlfwdt=hlfwdt, intht=intht, maxhgt=maxhgt, wspd=wspd, lupper=lupper, llower=llower, hdom=hdom, vdom=vdom, smink=smink, smaxk=smaxk, scorer=scorer, rossby=rossby)
 
 if __name__ == '__main__':
     #app.run(host='0.0.0.0', port=5000, debug=True)
