@@ -1329,6 +1329,22 @@ section {
   height: 100%;
 }
 
+.team .ref-btn {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 28px;
+  border-radius: 4px;
+  transition: 0.5s;
+  margin-top: 10px;
+  border: 2px solid #D2691E;
+  color: #D2691E;
+  background-color: transparent;
+  margin-top: 10px;
+}
+
 @media (max-width: 468px) {
   .team .team-member {
     flex-direction: column;
