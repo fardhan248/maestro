@@ -55,7 +55,7 @@
 }
 
 .resultcontainer {
-  width: 100%;  
+  width: 100%;
   padding-left: 50px;
   padding-right: 50px;
 }
@@ -293,7 +293,7 @@ h6 {
 # Navigation Menu
 --------------------------------------------------------------*/
 /**
-* Desktop Navigation 
+* Desktop Navigation
 */
 .navbar {
   padding: 0;
@@ -432,7 +432,7 @@ h6 {
 }
 
 /**
-* Mobile Navigation 
+* Mobile Navigation
 */
 .mobile-nav-toggle {
   color: #fff;
@@ -549,7 +549,7 @@ h6 {
 #hero {
   width: 100%;
   height: 105vh;
-  background: url("../img/cover2.jpg") top center;
+  background: url("../img/bg4.jpg") center center;
   background-size: cover;
   position: relative;
   margin-top: -30px;
@@ -1033,7 +1033,7 @@ section {
 # Cta
 --------------------------------------------------------------*/
 .cta {
-  background: linear-gradient(rgba(244, 173, 50, 0.9), rgba(226, 139, 24, 0.9)), url("../img/depan.jpg") fixed center center;
+  background: linear-gradient(rgba(244, 173, 50, 0.9), rgba(226, 139, 24, 0.9)), url("../img/bg2.jpg") fixed center center;
   background-size: cover;
   padding: 30px 0;
 }
@@ -2090,7 +2090,7 @@ quiz .container{
 # Simulation
 --------------------------------------------------------------*/
 .sim {
-  background: linear-gradient(rgba(2, 2, 2, 0.5), rgba(0, 0, 0, 0.5)), url("../img/cover1.jpg") fixed center center;
+  background: linear-gradient(rgba(2, 2, 2, 0.5), rgba(0, 0, 0, 0.5)), url("../img/bg1.jpg") fixed center center;
   background-size: cover;
   padding: 60px 0;
 }
