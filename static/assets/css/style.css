@@ -1093,6 +1093,22 @@ section {
   flex-direction: column;
 }
 
+.recent-blog-posts .ref-btn {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 28px;
+  border-radius: 4px;
+  transition: 0.5s;
+  margin-top: 10px;
+  border: 2px solid #D2691E;
+  color: #D2691E;
+  background-color: transparent;
+  margin-top: 40px;
+}
+
 .recent-blog-posts .post-box .post-img {
   overflow: hidden;
   margin: -30px -30px 15px -30px;
