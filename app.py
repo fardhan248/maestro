@@ -356,11 +356,17 @@ def show():
             <div class="flex-container">
                 <img id="tlw" src="data:image/png;base64,{{ tlw_data }}">
             </div>
+            <div class="text-center">
+                <a class="ref-btn" href="data:image/png;base64,{{ tlw_data }}" download="kecepatan_vertikal.png">Unduh Gambar</a>
+            </div>
         </div>
 
         <div class="col-lg-6">
             <div class="flex-container">
                 <img id="stream" src="data:image/png;base64,{{ stream_data }}">
+            </div>
+            <div class="text-center">
+                <a class="ref-btn" href="data:image/png;base64,{{ stream_data }}" download="analisis_streamline.png">Unduh Gambar</a>
             </div>
         </div>
         </div>
