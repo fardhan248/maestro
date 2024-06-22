@@ -55,6 +55,10 @@ def tim3():
 def information():
     return render_template("information.html")
 
+@app.route("/referensi")
+def referensi():
+    return render_template("referensi.html")
+
 def stream(x, y, U, v, num, hline):
     xsize = x.shape[0]
     ysize = y.shape[0]
@@ -76,7 +80,7 @@ def stream(x, y, U, v, num, hline):
         ycell = 1+dh*(j)
         if ycell < 0:
             ycell = 0
-        
+
         if ycell > ysize:
             ycell = ysize
 
@@ -162,7 +166,7 @@ def tlwplot(Lupper, Llower, U, H, a, ho, xdom, zdom, mink, maxk):
             matrix3 = matrix3+0.5*(matrix1+matrix2)*dk
 
         matrix1 = matrix2
-    
+
     w = np.real(matrix3/ht)
     Hline = H*np.ones((npts+1))
     fig_stream = stream(x, z, U, w, 10, Hline)
@@ -239,7 +243,7 @@ def analyzeFlow():
     maxk = smaxk/a
 
     tlw, stream = tlwplot(Lupper, Llower, U, H, a, ho, xdom, zdom, mink, maxk)
-        
+
     return jsonify({"tlw_plot": tlw, "stream_plot": stream})
 
 @app.route("/showResults", methods=["POST"])
